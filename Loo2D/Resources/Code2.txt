@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Fibonacci checker</title>
+    <style>
+        body {
+            font-family: Algerian, Times, Georgian;
+            color: green;
+            padding-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter a Fibonacci number</h1>
+    <input id="InputNum" type="number" required="required" />
+    <button onclick="TestFibo()">Test Input</button>
+    <h2 id="IsFibo"></h2>
+
+    <script>
+        function TestFibo()
+        {
+            InputNum = document.getElementById("InputNum").value;
+
+            var test1 = Math.sqrt(5 * Math.pow(InputNum, 2) + 4);
+            var test2 = Math.sqrt(5 * Math.pow(InputNum, 2) - 4);
+
+            if (test1 == Math.floor(test1) || test2 == Math.floor(test2))
+                document.getElementById("IsFibo").innerHTML = InputNum + " is a Fibonacci number";
+            else
+                document.getElementById("IsFibo").innerHTML = InputNum + " is not a Fibonacci number";
+        }
+    </script>
+</body>

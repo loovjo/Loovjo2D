@@ -1,0 +1,23 @@
+public class MemoizedFibonacci {
+    private static final List<BigInteger> FIBONACCI_LIST = new ArrayList<>();
+    static {
+        FIBONACCI_LIST.add(BigInteger.ZERO);
+        FIBONACCI_LIST.add(BigInteger.ONE);
+    }
+
+    public static BigInteger fibonacci(final int number) {
+        if (number < 0){
+            throw new IllegalArgumentException("negative number: " + number);
+        }
+        if (isInFibonacciList(number)) {
+            return FIBONACCI_LIST.get(number);
+        }
+        BigInteger fibonacci = fibonacci(number - 1).add(fibonacci(number - 2));
+        FIBONACCI_LIST.add(fibonacci);
+        return fibonacci;
+    }
+
+    private static boolean isInFibonacciList(final int number) {
+        return (number <= FIBONACCI_LIST.size() - 1);
+    }
+}
